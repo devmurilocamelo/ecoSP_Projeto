@@ -1,4 +1,4 @@
-import { TYPES, PRIORITIES, STATUSES, label, icon, colorFor, initials } from "@/lib/constants";
+import { TYPES, PRIORITIES, STATUSES, label, icon, colorFor, initials, presence } from "@/lib/constants";
 
 export function TypeIcon({ type }) {
   return (
@@ -39,6 +39,16 @@ export function Avatar({ name, email, size = 24 }) {
       title={name}
     >
       {initials(name)}
+    </span>
+  );
+}
+
+export function Presence({ user }) {
+  const p = presence(user);
+  return (
+    <span className={`presence ${p.online ? "on" : ""}`}>
+      <span className={`presence-dot ${p.online ? "on" : ""}`} />
+      {p.text}
     </span>
   );
 }
